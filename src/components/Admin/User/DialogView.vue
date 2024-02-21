@@ -57,9 +57,6 @@
                 <v-card-actions class="pr-4">
                     <v-spacer></v-spacer>
                     <v-btn class="text-capitalize" @click="close()" text="Hủy"></v-btn>
-                    <!-- <v-btn type="submit" color="#0F60FF" class="text-capitalize" variant="elevated">{{ idEdit ? "Cập" :
-                        "Thêm"
-                    }}<span class="text-lowercase">{{ idEdit ? "nhật" : "mới" }}</span></v-btn> -->
                     <v-btn type="submit" color="#0F60FF" class="text-capitalize" variant="elevated">{{
                         idEdit ? "Update" : "Thêm" }}<span class="text-lowercase">{{ idEdit ? "" : "mới" }}</span></v-btn>
                 </v-card-actions>
