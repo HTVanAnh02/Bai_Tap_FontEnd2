@@ -144,7 +144,7 @@ const products = reactive([
     title: "Kem Nền Yves Saint Laurent YSL",
     description: "Kem Nền Lâu Trôi MAC Studio Fix Fluid SPF 15 là dòng sản phẩm kem nền bán chạy nhất của thương hiệu mỹ phẩm M·A·C.",
     price: "40",
-    sale: 250,
+    sale: 25,
     feedback: 5.0
   },
   {
@@ -192,7 +192,7 @@ const products = reactive([
     title: "Kem Nền Yves Saint Laurent YSL",
     description: "Kem Nền Lâu Trôi MAC Studio Fix Fluid SPF 15 là dòng sản phẩm kem nền bán chạy nhất của thương hiệu mỹ phẩm M·A·C.",
     price: "40",
-    sale: 250,
+    sale: 27,
     feedback: 5.0
   },
   {
