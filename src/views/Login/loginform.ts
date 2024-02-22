@@ -1,7 +1,7 @@
 import { useField, useForm } from 'vee-validate';
 import { loginWithPasswordSchema } from './schema';
 import { computed } from 'vue';
-import { useAuthUserStore } from '@/store/auth/useAuthUserStore';
+// import { useAuthUserStore } from '@/store/auth/useAuthUserStore';
 import { showSuccessNotification, showWarningsNotification } from '@/common/helper/helpers';
 import router from '@/router';
 // const {login} =useAuthUserStore()
@@ -28,9 +28,6 @@ export const userLoginForm=()=>{
         errorMessage: passwordError,
       } = useField('password');
       const handleLogin = handleSubmit(async (values) => {
-        //console.log(values)
-        // alert(process.env.VUE_APP_API_URL)
-        // const res=await login(values)
         const res=await authStore.login(
           {
             email:values.email,
