@@ -3,35 +3,36 @@
         <h2>Inside Open Art</h2>
         <div class="container">
             <div>
-                <img src="../assets/Prison.png" alt="">
+                <v-img src="../assets/icon/Prison.png" height="30" width="30" class="child-icon" />
+                <!-- <img src="../assets/icon2.png" alt=""> -->
                 <p>4pt grid system</p>
                 <p>Base on 4pt gird system. Our UI KIT help you crate perfect white space</p>
             </div>
             <div>
-                <img src="../assets/icon2.png" alt="">
+                <v-img src="../assets/icon/Color Dropper.png" height="30" width="30" class="child-icon" />
                 <p>Color style</p>
                 <p>All color in OpenArt are styled. You can change all
 design color with one click</p>
             </div>
             <div>
-                <img src="../assets/icon3.png" alt="">
+                <v-img src="../assets/icon/Vector.png" height="30" width="30" class="child-icon" />
                 <p>Free font</p>
                 <p>OpenArt use Epilogue font family</p>
                 <p>Available with open licence in gooogle font</p>
             </div>
             <div>
-                <img src="../assets/icon4.png" alt="">
+                <v-img src="../assets/icon/Toggle On.png" height="30" width="30" class="child-icon" />
                 <p>Darkmode avaiable</p>
                 <p>Our UI Kit support darkmode</p>
                 <p>Chage your design to dark mode with one click</p>
             </div>
             <div>
-                <img src="../assets/icon5.png" alt="">
+                <v-img src="../assets/icon/Design.png" height="30" width="30" class="child-icon" />
                 <p>Easy to customize</p>
                 <p>Create any design with OpenArt UI kits </p>
             </div>
             <div>
-                <img src="../assets/icon6.png" alt="">
+                <v-img src="../assets/icon/Four Squares.png" height="30" width="30" class="child-icon" />
                 <p>Variant components</p>
                 <p>All component art variant, easy to design, 
 easy to control</p>
