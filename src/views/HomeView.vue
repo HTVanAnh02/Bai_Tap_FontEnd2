@@ -1,122 +1,127 @@
 <template>
-  <v-row class="ml-3 mt-3">
-    <v-col cols="4" sm="6" md="6" lg="2">
-      <v-select v-model="SelectedCategory" density="compact" label="Chọn sản phẩm" :items="['Son', 'Kem Nền', 'All']"
-        variant="outlined"></v-select>
-    </v-col>
-    <v-col cols="4" sm="6" md="6" lg="2">
-      <v-select v-model="selectedSort" label="Giá" density="compact" :items="['Từ cao -> thấp', 'Từ thấp -> cao']"
-        variant="outlined"></v-select>
-    </v-col>
-    <v-col cols="4" sm="6" md="6" lg="2">
-      <v-select density="compact" :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-        variant="outlined"></v-select>
-    </v-col>
-    <v-col cols="12" sm="6" md="6" lg="6" class="text-right">
-      <v-btn style="background-color: #bbccf6;color:#4d4d50" class="rounded-1 text-capitalize" variant="tonal">
-        Show all
-      </v-btn>
-      <v-btn style="font-weight: bold;color: #2264D1;" bg-color="white" class="rounded-1 text-capitalize"
-        variant="elevated">
-        Action
-      </v-btn>
-      <v-btn style="background-color: #bbccf6;color:#4d4d50" class="rounded-1 text-capitalize" variant="tonal">
-        Buy now
-      </v-btn>
-      <v-btn style="background-color: #adc4fe" class="ml-5" ariant="tonal">
-        <v-icon>mdi mdi-menu</v-icon>
-      </v-btn>
-      <v-btn class="mr-5" variant="elevated">
-        <v-icon style="color: #0c5bda;">mdi mdi-microsoft</v-icon>
-      </v-btn>
-    </v-col>
-  </v-row>
-  <div>
-    <v-row class="px-6">
-      <v-chip-group>
-        <h3 class="ma-2 font-weight-bold mt-3" style="font-size: 14px; color: #19191d">
-          Releted
-        </h3>
-        <v-chip size="large" style="font-size: 14px">worldwide shipping</v-chip>
-        <v-chip size="large" style="font-size: 14px">under $50</v-chip>
-        <v-chip size="large" style="font-size: 14px">kitten</v-chip>
-        <v-chip size="large" style="font-size: 14px">plastic plugs</v-chip>
-        <v-chip size="large" style="font-size: 14px">pucker shoes</v-chip>
-        <v-chip size="large" style="font-size: 14px">vintage typewriter</v-chip>
-      </v-chip-group>
+  <v-card class="custom-card" :style="{ top: '24px' }">
+    <v-row class="ml-3 mt-0">
+      <v-col cols="4" sm="6" md="6" lg="2">
+        <v-select v-model="SelectedCategory" density="compact" label="Chọn sản phẩm" :items="['All', 'Quần', 'Áo']"
+          variant="outlined"></v-select>
+      </v-col>
+      <v-col cols="4" sm="6" md="6" lg="2">
+        <v-select v-model="selectedSort" label="Giá" density="compact" :items="['Từ cao -> thấp', 'Từ thấp -> cao']"
+          variant="outlined"></v-select>
+      </v-col>
+      <v-col cols="4" sm="6" md="6" lg="2" >
+        <v-select density="compact" :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+          variant="outlined"></v-select>
+      </v-col>
+      <v-col cols="12" sm="6" md="6" lg="6" class="text-right">
+        <v-btn style="background-color: #bfd0fb;color:#4d4d50" class="rounded-1 text-capitalize" variant="tonal">
+          Show all
+        </v-btn>
+        <v-btn style="font-weight: bold;color: #2264D1;" bg-color="white" class="rounded-1 text-capitalize"
+          variant="elevated">
+          Action
+        </v-btn>
+        <v-btn style="background-color: #adc4fe;color:#4d4d50" class="rounded-1 text-capitalize" variant="tonal">
+          Buy now
+        </v-btn>
+        <v-btn style="background-color: #adc4fe" class="ml-5" ariant="tonal">
+          <v-icon>mdi mdi-menu</v-icon>
+        </v-btn>
+        <v-btn class="mr-5" variant="elevated">
+          <v-icon style="color: #0c5bda;">mdi mdi-microsoft</v-icon>
+        </v-btn>
+      </v-col>
     </v-row>
-  </div>
-  <v-row>
-    <v-col cols="12" sm="12" md="6" lg="3" v-for="(mypham, i) in Myphams" :key="i">
-      <v-card class="custom-shadow" height="472px" with="258px" align="center" variant="flat" hover rounded="lg">
-        <v-img :src="mypham.image" width="227" height="224" contain class="flex-grow-1  margin-bottom: 10px"
-          style="object-fit: cover"></v-img>
-        <v-card-text class="mt-1 text-left" style="font-size: 16px; color: #19191d">
-          {{ mypham.title }}
-        </v-card-text>
-        <v-card-text class="mt-n4 text-left " style="font-size: 14px; font-weight: 700;padding: auto; color: #040404"
-          height="226px" width="21px">
-          <p style="font-size: 24px ;margin: left 20px;"> ${{ mypham.price }} </p>
-          <span v-if="mypham.sale > 0"
-            style="margin-right: -1.5%;font-size: 12px;float: right;min-width: 70px;min-height: 24px;padding: 2px;background-color: #e2f3e8;text-align: center;color: #ee741c;font-weight: 300;">
-            {{ mypham.sale }}% OFF
-          </span>
-        </v-card-text>
-        <v-card-text class="mt-n2 text-left" style="font-size: 14px; color: #787885">
-          {{ mypham.description }}
-        </v-card-text>
-        <v-card-actions>
-          <v-row class="mt-n4">
-            <v-col class="ml-3 mt-1" cols="5" style="display: flex;">
-              <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
-              <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
-              <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
-              <v-icon color="#FB8200" style="font-size: 16px;" v-if="mypham.feedback == 5" size="x-small">mdi
-                mdi-star</v-icon>
-              <v-icon color="#FB8200" style="font-size: 16px;" v-if="(mypham.feedback < 5 && mypham.feedback > 4)"
-                size="x-small">mdi mdi-star-half</v-icon>
-              <span style="font-size: 16px; margin-top: -4px;">{{ mypham.feedback }}</span>
-            </v-col>
-            <v-col class="text-right" cols="6">
-              <v-btn class="text-capitalize" color="primary" size="small" prepend-icon="mdi-heart-outline"
-                variant="outlined" style="margin-top: -4px;">
-                Watch
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col cols="12" md="4" sm="12" lg="4">
-      <v-card variant="tonal" height="156px" with="361px">
-        <v-card-title class="text-center mt-4">
-          <v-img src="../assets/img/Vector.png" height="44px" with="44px" class="ma-2"></v-img>
-        </v-card-title>
-        <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Clear & Usable user flows</v-card-text>
-        <p class="text-center" style="font-size: 14px;">Let’s boost yout marketplace</p>
-      </v-card>
-    </v-col>
-    <v-col cols="12" md="4" sm="12" lg="4">
-      <v-card variant="tonal" height="156px" with="361px">
-        <v-card-title class="text-center mt-4">
-          <v-img src="../assets/img/Vector1.png" height="44px" with="44px" class="ma-2"></v-img>
-        </v-card-title>
-        <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Fine & Styled components</v-card-text>
-        <p class="text-center" style="font-size: 14px;">Speed up with Setproduct templates</p>
-      </v-card>
-    </v-col>
-    <v-col cols="12" md="4" sm="12" lg="4">
-      <v-card variant="tonal" height="156px" with="361px">
-        <v-card-title class="text-center mt-4">
-          <v-img src="../assets/img/lightbulb-on-outline.png" height="44px" with="44px" class="ma-2"></v-img>
-        </v-card-title>
-        <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Customizable & Reusable</v-card-text>
-        <p class="text-center" style="font-size: 14px;">Take our UX patterns and rebuild</p>
-      </v-card>
-    </v-col>
-  </v-row>
+    <div>
+      <v-row class="px-6">
+        <v-chip-group>
+          <h3 class="ma-2 font-weight-bold mt-3" style="font-size: 14px; color: #19191d">
+            Releted
+          </h3>
+          <v-chip size="large" style="font-size: 14px">worldwide shipping</v-chip>
+          <v-chip size="large" style="font-size: 14px">under $50</v-chip>
+          <v-chip size="large" style="font-size: 14px">kitten</v-chip>
+          <v-chip size="large" style="font-size: 14px">plastic plugs</v-chip>
+          <v-chip size="large" style="font-size: 14px">pucker shoes</v-chip>
+          <v-chip size="large" style="font-size: 14px">vintage typewriter</v-chip>
+        </v-chip-group>
+      </v-row>
+    </div>
+    <v-row>
+      <v-col cols="12" sm="12" md="6" lg="3" v-for="(mypham, i) in Myphams" :key="i">
+        <v-card class="custom-shadow" height="472px" with="258px" align="center" variant="flat" hover rounded="lg">
+          <v-img :src="mypham.image" width="227" height="224" contain class="flex-grow-1  margin-bottom: 10px"
+            style="object-fit: cover"></v-img>
+          <v-card-text class="mt-1 text-left" style="font-size: 16px; color: #19191d">
+            {{ mypham.title }}
+          </v-card-text>
+          <v-card-text class="mt-n4 text-left " style="font-size: 14px; font-weight: 700;padding: auto; color: #040404"
+            height="226px" width="21px">
+            <p style="font-size: 24px ;margin: left 20px;"> ${{ mypham.price }} </p>
+            <span v-if="mypham.sale > 0"
+              style="margin-right: -1.5%;font-size: 12px;float: right;min-width: 70px;min-height: 24px;padding: 2px;background-color: #e2f3e8;text-align: center;color: #ee741c;font-weight: 300;">
+              {{ mypham.sale }}% OFF
+            </span>
+          </v-card-text>
+          <v-card-text class="mt-n2 text-left" style="font-size: 14px; color: #787885">
+            {{ mypham.description }}
+          </v-card-text>
+          <v-card-actions>
+            <v-row class="mt-n4">
+              <v-col class="ml-3 mt-1" cols="5" style="display: flex;">
+                <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
+                <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
+                <v-icon color="#FB8200" size="x-small" style="font-size: 16px;">mdi mdi-star</v-icon>
+                <v-icon color="#FB8200" style="font-size: 16px;" v-if="mypham.feedback == 5" size="x-small">mdi
+                  mdi-star</v-icon>
+                <v-icon color="#FB8200" style="font-size: 16px;" v-if="(mypham.feedback < 5 && mypham.feedback > 4)"
+                  size="x-small">mdi mdi-star-half</v-icon>
+                <span style="font-size: 16px; margin-top: -4px;">{{ mypham.feedback }}</span>
+              </v-col>
+              <v-col class="text-right" cols="6">
+                <v-btn class="text-capitalize" color="primary" size="small" prepend-icon="mdi-heart-outline"
+                  variant="outlined" style="margin-top: -4px;">
+                  Watch
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="4" sm="12" lg="4">
+        <v-card variant="tonal" height="156px" with="361px">
+          <v-card-title class="text-center mt-4">
+            <v-img src="../assets/img/Vector.png" height="44px" with="44px" class="ma-2"></v-img>
+          </v-card-title>
+          <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Clear & Usable user
+            flows</v-card-text>
+          <p class="text-center" style="font-size: 14px;">Let’s boost yout marketplace</p>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="4" sm="12" lg="4">
+        <v-card variant="tonal" height="156px" with="361px">
+          <v-card-title class="text-center mt-4">
+            <v-img src="../assets/img/Vector1.png" height="44px" with="44px" class="ma-2"></v-img>
+          </v-card-title>
+          <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Fine & Styled
+            components</v-card-text>
+          <p class="text-center" style="font-size: 14px;">Speed up with Setproduct templates</p>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="4" sm="12" lg="4">
+        <v-card variant="tonal" height="156px" with="361px">
+          <v-card-title class="text-center mt-4">
+            <v-img src="../assets/img/lightbulb-on-outline.png" height="44px" with="44px" class="ma-2"></v-img>
+          </v-card-title>
+          <v-card-text class="text-center font-weight-bold" style="font-size: 20px;">Customizable &
+            Reusable</v-card-text>
+          <p class="text-center" style="font-size: 14px;">Take our UX patterns and rebuild</p>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-card>
 </template>
 
 <script lang="ts" setup>
@@ -238,7 +243,35 @@ const Myphams = computed(() => {
 });
 </script>
 
-<style>
+<style scop>
+.custom-card {
+  border-radius: 8px;
+  /* Điều chỉnh giá trị theo mong muốn để có độ bo tròn nhẹ */
+}
+
+.custom-col {
+  width: 136px;
+  height: 36px;
+  position: relative;
+  top: 16px;
+  /* Khoảng cách từ v-col lên đến v-card */
+  margin: 0 16px;
+  /* Khoảng cách từ v-col đến v-card bên trái và bên phải */
+}
+
+.custom-row {
+  margin-bottom: 16px;
+  /* Khoảng cách giữa các dòng (nếu cần) */
+}
+
+.custom-col {
+  width: 136px;
+  height: 36px;
+  position: relative;
+  top: 40px;
+  left: 16px;
+}
+
 .custom-shadow {
   margin-top: 10px;
   box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.2);
@@ -253,5 +286,4 @@ const Myphams = computed(() => {
 
 .my-card-text {
   overflow-y: hidden;
-}
-</style>
+}</style>

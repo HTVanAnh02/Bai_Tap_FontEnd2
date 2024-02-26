@@ -86,8 +86,6 @@ import {useUser} from '../User/user'
 import ConfirmVue from '@/components/confirm/IndexView.vue'
 import { userServiceApi } from '@/service/user.api';
 import { showErrorNotification, showSuccessNotification } from '@/common/helper/helpers';
-
-
 const DD_MM_YYYY=DATE_TIME_FORMAT.DD_MM_YYYY_DASH
 const isShowDialog = ref(false);
 const isDialogDelete=ref(false)

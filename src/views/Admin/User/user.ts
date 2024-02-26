@@ -3,7 +3,6 @@ import { userServiceApi } from "@/service/user.api";
 import { DEFAULT_COMMON_LIST_QUERY } from "@/common/contant/contants";
 import { useLoadingStore } from "@/store/loading";
 import { IUser } from "./interface";
-// import { create } from "lodash";
 export const useUser=()=>{
     const loading=useLoadingStore()
     const users = ref<IUser[]>([])

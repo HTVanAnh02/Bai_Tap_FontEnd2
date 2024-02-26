@@ -18,17 +18,26 @@ export const logout = (redirectToLogin = true) => {
 export const sendRefreshToken = async () => {
   let response;
   try {
+    alert ('ok')
     const API_URL = process.env.VUE_APP_API_URL;
-    response = await axios.get(`${API_URL}/auth/token`, { withCredentials: true });
+    response = await axios.post(`${API_URL}/auth/refresh-token`,localStorageAuthService.getRefreshToken() ,
+    {
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    });
+
+    console.log(response.data);
+    
     if (response?.status === HttpStatus.OK) {
       localStorageAuthService.setAccessToken(response.data?.data.accessToken);
       localStorageAuthService.setAccessTokenExpiredAt(response.data?.data.expiresIn);
       return;
     }
-    logout(true);
+    // logout(true);
     return;
   } catch (error) {
-    logout(true);
+    // logout(true);
     return;
   }
 };

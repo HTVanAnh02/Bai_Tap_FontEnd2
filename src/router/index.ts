@@ -50,7 +50,6 @@ const routes: Array<RouteRecordRaw> = [
         path: 'product',
         name:PageName.ADMIN_PRODUCT,
         component: () => import('../views/Admin/Product/ProductView.vue'),
-        props: true,
         meta: {
           role:Role.ADMIN,
           public:false,
@@ -60,9 +59,8 @@ const routes: Array<RouteRecordRaw> = [
         path: 'user',
         name:PageName.ADMIN_USER,
         component: () => import('../views/Admin/User/UserView.vue'),
-        props: true ,
         meta: {
-          role:Role.ADMIN,
+          role:Role.USER,
           public:false,
         },
       }

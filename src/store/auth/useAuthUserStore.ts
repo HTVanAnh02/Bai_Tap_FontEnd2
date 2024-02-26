@@ -1,9 +1,6 @@
 import { defineStore } from 'pinia'
-// import router from '@/router'
-// import axios from '@/plugins/axios/axios'
 import { IAuthUserInterface,IUserInterface } from '@/common/interface/interfaces'
 import localStorageAuthService from '@/common/storages/authStorage'
-// import { showErrorNotification } from '@/common/helper/helpers'
 import { authServiceApi } from '@/service/auth.api'
 
 const initalUserState: Partial<IUserInterface> = {
