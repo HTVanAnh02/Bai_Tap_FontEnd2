@@ -7,7 +7,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="Secondary" variant="text" >Hủy</v-btn>
+          <v-btn color="secondary" variant="text" @click="cancel">Hủy</v-btn>
           <v-btn color="Dark"  @click="emit('delete',props.idDelete)" variant="text">Xóa</v-btn>
         </v-card-actions>
       </v-card>

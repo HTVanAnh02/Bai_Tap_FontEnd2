@@ -1,13 +1,15 @@
+
 import { createRouter, createWebHistory, NavigationGuardWithThis, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
 import { PageName, Role } from '../common/contant/contants';
 import authMiddleware from './authMiddleware';
 import VueRouteMiddleware, { GLOBAL_MIDDLEWARE_NAME } from './middleware';
+import LoginViewVue from '@/views/Login/LoginView.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: PageName.TRANG_CHU,
-    component: HomeView,
+    name: PageName.LOGIN_PAGE,
+    component: LoginViewVue,
     meta: {
       public: true,
     },
@@ -29,9 +31,9 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/login',
-    name: PageName.LOGIN_PAGE,
-    component: () => import('../views/Login/LoginView.vue'),
+    path: '/home',
+    name: PageName.TRANG_CHU,
+    component: () => import('../views/HomeView.vue'),
     meta: {
       public: true,
     },
@@ -60,7 +62,7 @@ const routes: Array<RouteRecordRaw> = [
         name:PageName.ADMIN_USER,
         component: () => import('../views/Admin/User/UserView.vue'),
         meta: {
-          role:Role.USER,
+          role:Role.ADMIN,
           public:false,
         },
       }

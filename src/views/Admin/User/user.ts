@@ -17,11 +17,16 @@ export const useUser=()=>{
           if(res.success)
           {
             return {
-              data:res.data.items,
-              totalItems:res.data.totalItems
+              data:res.items,
+              totalItems:res.totalItems
             }
           }
-          return null
+          else{
+            return {
+              data:[],
+              totalItems:0
+            }
+          }  
         } catch (error) {
           console.error('Error fetching user:', error);
         }

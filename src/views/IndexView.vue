@@ -1,7 +1,8 @@
 <template>
     <v-app>
         <v-layout>
-            <v-navigation-drawer @click.stop="rail = !rail" v-model="drawer" :rail="rail" class="navigation_drawer" permanent>
+            <v-navigation-drawer @click.stop="rail = !rail" v-model="drawer" :rail="rail" class="navigation_drawer"
+                permanent>
                 <v-toolbar style="background-color: white;">
                     <v-row>
                         <v-col cols="8">
@@ -10,15 +11,17 @@
                                     src="https://res.cloudinary.com/dgtjdhrnq/image/upload/v1705460127/logo1_adshdl.png"></v-img>
                             </v-toolbar-title>
                         </v-col>
-                        <v-col class="text-center" cols="4">
-                            <img @click.stop="rail = !rail" style="margin-top: 18%;" src="../assets/indent.png" alt="">
+                        <v-col cols="3" class="text-right">
+                            <img @click.stop="rail = !rail" style="margin-top: 18%;"
+                                src="https://res.cloudinary.com/dgtjdhrnq/image/upload/v1708508357/indent_oymmcm.png"
+                                alt="">
                         </v-col>
                     </v-row>
                 </v-toolbar>
                 <v-divider></v-divider>
                 <v-list density="compact" nav>
-                    <v-list-item v-show="this.rail == false" class="text-uppercase" style="opacity: 0.6;font-size: 13px;">Quản
-                        lý sản phẩm</v-list-item>
+                    <v-list-item v-show="this.rail == false" class="text-uppercase"
+                        style="opacity: 0.6;font-size: 13px;">Quản lý sản phẩm</v-list-item>
                     <v-list-item prepend-icon="mdi-apps" title="Sản phẩm" value="Sản phẩm" to='product'></v-list-item>
                     <v-list-item prepend-icon="mdi-account-group" title="User" value="User" to='user'></v-list-item>
                 </v-list>
