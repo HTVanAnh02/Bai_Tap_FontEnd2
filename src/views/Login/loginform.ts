@@ -4,9 +4,11 @@ import { computed } from 'vue';
 import { showSuccessNotification, showWarningsNotification } from '@/common/helper/helpers';
 import router from '@/router';
 import { AuthStore } from '@/store/auth/authStore';
+import { useLoadingStore } from '@/store/loading';
 import localStorageAuthService from '@/common/storages/authStorage';
 import { Role } from '@/common/contant/contants';
 export const userLoginForm=()=>{
+  const loading=useLoadingStore()
   const authStore=AuthStore()
     const {
         handleSubmit,
@@ -28,11 +30,13 @@ export const userLoginForm=()=>{
         errorMessage: passwordError,
       } = useField('password');
       const handleLogin = handleSubmit(async (values) => {
+        loading.setLoading(true)
         const res=await authStore.login(
           {
             email:values.email,
             password:values.password
           });
+        loading.setLoading(false)
         if(res)
         {
           if(localStorageAuthService.getUserRole()===Role.ADMIN)
@@ -40,11 +44,17 @@ export const userLoginForm=()=>{
             showSuccessNotification("Đăng nhập thành công")
             router.push('/admin/product')
           }
-          if(localStorageAuthService.getUserRole()===Role.USER)
+          else if(localStorageAuthService.getUserRole()===Role.USER)
           {
             showSuccessNotification("Đăng nhập thành công")
             router.push('/home')
           }
+          else
+            showWarningsNotification("Lỗi Role ở login")
+        }
+        else
+        {
+          showWarningsNotification("Đăng nhập thất bại. Vui lòng thử lại")
         }
       });
     const isValidForm = computed(() => meta.value.valid);

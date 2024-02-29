@@ -2,7 +2,7 @@
 <script setup>
 import { computed, onMounted, reactive, ref, watch, watchEffect } from 'vue';
 import DialogViewVue from '@/components/Admin/Product/DialogView.vue';
-import ConfirmVue from '@/components/confirm/IndexView.vue'
+import ConfirmVue from '@/components/confirm/confirmView.vue'
 const isShowDialog = ref(false);
 const isDialogDelete = ref(false)
 const seletedValue = ref(DEFAULT_LIMIT_FOR_PAGINATION)
@@ -55,6 +55,7 @@ const updateProductById = item => {
 const deleteProductById = async (id) => {
   const data = await productServiceApi._delete(id)
   // console.log(data)
+
   if (data.success) {
     loadData()
     isDialogDelete.value = false
@@ -80,7 +81,6 @@ const searchEnter = () => {
   }
 }
 watch(seletedValue, (newval) => {
-  // alert(newval)
   query.limit = newval
   query.page = 1
   page.value = 1
@@ -114,9 +114,9 @@ watch(isShowDialog, (newVal) => {
   <div style="margin: 1.5%;">
     <v-row>
       <v-col cols="5" sm="4" md="4" lg="3">
-        <v-text-field @keyup.enter="searchEnter()" v-model="search" style="background-color: white;" density="compact"
-          variant="solo" label="Tìm kiếm" append-inner-icon="mdi mdi-magnify" single-line hide-details
-          class="mr-2"></v-text-field>
+        <v-text-field @keyup.enter="searchEnter()" v-model="search" style="width: 316px; height: 37px; background-color: white;" density="compact"
+          variant="solo"  label="Tìm kiếm" append-inner-icon="mdi mdi-magnify" single-line hide-details
+          class="mr-2" ></v-text-field>
       </v-col>
       <v-col cols="7" class="text-right" lg="9" sm="8" md="8">
         <v-btn @click="addProduct()" color="#0F60FF" prepend-icon="mdi mdi-plus" class="text-capitalize">
@@ -168,13 +168,14 @@ watch(isShowDialog, (newVal) => {
                   <v-img style="border-radius: 2px;" width="36" height="36" :src="item.imageUrl"></v-img>
                 </td>
                 <td class="text-center">
-                  <v-row class="ml-5">
-                    <span style="cursor: pointer;opacity: 0.6;margin-left: 12%;" density="compact" variant="text"><i
-                        class="fa-regular fa-pen-to-square mr-4" @click="updateProductById(item)"></i></span>
-                    <span style="cursor: pointer;opacity: 0.6;margin-right: 2%;"
-                      @click="{ isDialogDelete = true; idDelete = item.id }" density="compact" variant="text"><i
-                        class="fa-solid fa-trash"></i></span>
-                  </v-row>
+                  <v-btn v-if="item" density="compact" variant="text" @click="updateProductById(item.id)" style="max-width: 24px;">
+                    <v-img src="https://res.cloudinary.com/dyo42vgdj/image/upload/v1709200255/edit_sh0ub9.png"
+                      width="24px" height="24px"></v-img>
+                  </v-btn>
+                  <v-btn v-if="item" density="compact" variant="text" class="ml-2" style="max-width: 24px;">
+                    <v-img src="https://res.cloudinary.com/dyo42vgdj/image/upload/v1709200260/trash_wsowgu.png"
+                      width="24px" height="24px" @click="{ isDialogDelete = true; idDelete = item.id }"></v-img>
+                  </v-btn>
                 </td>
               </tr>
               <tr></tr>
@@ -223,7 +224,9 @@ watch(isShowDialog, (newVal) => {
 .opacity {
   opacity: 0.6;
 }
-
+.hover-effect {
+  opacity: 1;
+}
 .v-table {
   font-size: 15px;
 }
@@ -248,4 +251,5 @@ watch(isShowDialog, (newVal) => {
   .page-table2 {
     display: none !important;
   }
-}</style>
+}
+</style>

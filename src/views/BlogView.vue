@@ -4,15 +4,19 @@
         <div class="container">
             <div>
                 <v-img src="../assets/icon/Prison.png" height="30" width="30" class="child-icon" />
-                <!-- <img src="../assets/icon2.png" alt=""> -->
-                <p>4pt grid system</p>
-                <p>Base on 4pt gird system. Our UI KIT help you crate perfect white space</p>
+                <p style="width: 181px;height: 25px; font-size: 24px; font-family: Epilogue, sans-serif;">4pt grid system
+                </p>
+                <p
+                    style="width: 396px; height: 42px; font-size: 16px; font-family: Epilogue, sans-serif; line-height: 21px;">
+                    Base on 4pt gird system. Our UI KIT helps you create perfect white space</p>
+                <p style="width: 396px;height: 42px; font-size: 16px; font-family: Epilogue, sans-serif;">Base on 4pt gird
+                    system. Our UI KIT help you crate perfect white space</p>
             </div>
             <div>
                 <v-img src="../assets/icon/Color Dropper.png" height="30" width="30" class="child-icon" />
                 <p>Color style</p>
                 <p>All color in OpenArt are styled. You can change all
-design color with one click</p>
+                    design color with one click</p>
             </div>
             <div>
                 <v-img src="../assets/icon/Vector.png" height="30" width="30" class="child-icon" />
@@ -34,8 +38,8 @@ design color with one click</p>
             <div>
                 <v-img src="../assets/icon/Four Squares.png" height="30" width="30" class="child-icon" />
                 <p>Variant components</p>
-                <p>All component art variant, easy to design, 
-easy to control</p>
+                <p>All component art variant, easy to design,
+                    easy to control</p>
             </div>
         </div>
     </div>
@@ -52,7 +56,7 @@ export default {
     margin: 0;
     padding: 0;
     box-shadow: 0;
-    font-family: Epilogue,sans-serif;
+    font-family: Epilogue, sans-serif;
 }
 
 .body {
@@ -65,13 +69,20 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-h2{
-    margin-top: 60px;
-    font-size: 40px;
+
+h2 {
+    width: 455px;
+    height: 64px;
+    margin-top: 116.56px;
+    left: 597.66px;
+    font-family: Epilogue, sans-serif;
     font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
     text-align: center;
 }
-.container >div{
+
+.container>div {
     width: 30%;
     background-color: white;
     height: auto;
@@ -80,28 +91,32 @@ h2{
     border-radius: 5px;
     padding: 20px;
 }
-.container{
+
+.container {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
     margin-top: 30px;
 }
-.container >div p:nth-child(2){
+
+.container>div p:nth-child(2) {
     margin: 10px;
     font-weight: 500;
 }
 
-.container >div p:last-child,.container >div p:nth-child(3){
+.container>div p:last-child,
+.container>div p:nth-child(3) {
     opacity: 0.7;
     margin-left: 10px;
 }
-.container >div img{
+
+.container>div img {
     width: 20px;
     margin-left: 10px;
 }
-.container >div p{
+
+.container>div p {
     font-size: 16px;
     line-height: 21px;
-}
-</style>
+}</style>

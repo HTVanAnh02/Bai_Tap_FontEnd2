@@ -18,7 +18,7 @@ export const logout = (redirectToLogin = true) => {
 export const sendRefreshToken = async () => {
   let response;
   try {
-    alert ('ok')
+    alert ('Hết thời gian đăng nhập. Vui lòng thử lại')
     const API_URL = process.env.VUE_APP_API_URL;
     response = await axios.post(`${API_URL}/auth/refresh-token`,localStorageAuthService.getRefreshToken() ,
     {
@@ -34,10 +34,8 @@ export const sendRefreshToken = async () => {
       localStorageAuthService.setAccessTokenExpiredAt(response.data?.data.expiresIn);
       return;
     }
-    // logout(true);
     return;
   } catch (error) {
-    // logout(true);
     return;
   }
 };

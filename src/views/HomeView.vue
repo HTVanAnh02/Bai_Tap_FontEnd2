@@ -248,9 +248,9 @@ const Myphams = computed(() => {
     filtered = products.filter(product => product.name.includes(SelectedCategory.value));
   }
   if (selectedSort.value === "Từ cao -> thấp") {
-    return filtered.sort((a, b) => b.price - a.price);
+    return filtered.sort((a, b) =>parseFloat(b.price) - parseFloat(a.price));
   } else {
-    return filtered.sort((a, b) => a.price - b.price);
+    return filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
   }
 });
 </script>

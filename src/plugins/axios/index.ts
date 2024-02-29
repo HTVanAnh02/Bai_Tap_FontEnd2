@@ -5,11 +5,10 @@ import axios, {
   type AxiosRequestHeaders,
   type AxiosResponse,
 } from 'axios';
-// import { throttle } from 'lodash';
+import { throttle } from 'lodash';
 import localStorageAuthService from '../../common/storages/authStorage';
 import dayjs from '../dayjs';
 import { sendRefreshToken } from './utils';
-import { throttle } from 'lodash';
 
 const options: AxiosRequestConfig = {
   headers: {
@@ -28,7 +27,7 @@ const throttled = throttle(sendRefreshToken, 10000, { trailing: false });
 axiosInstance.interceptors.request.use(async (config: any) => {
   const tokenExpiredAt = localStorageAuthService.getAccessTokenExpiredAt();
   if (tokenExpiredAt && dayjs(tokenExpiredAt).isBefore()) {
-    // check refresh token ok, call refresh token api
+    // alert("token hết hạn")
     await throttled();
   }
   Object.assign(config, {
@@ -37,6 +36,8 @@ axiosInstance.interceptors.request.use(async (config: any) => {
       ...config.headers,
     },
   });
+  // alert(1)
+  // console.log(config)
   return config;
 });
 
@@ -103,4 +104,4 @@ axiosInstance.interceptors.response.use(
 
 export default axiosInstance;
 export * from './api';
-// export * from './utils';
+export * from './utils';

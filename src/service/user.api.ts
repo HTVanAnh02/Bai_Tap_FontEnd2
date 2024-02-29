@@ -13,7 +13,7 @@ class UserApiService extends ApiService {
     });
   }
   async updateUser(id:string,formData: FormData): Promise<IBodyResponse<any>> {
-    return await this.client.patch(`${this.baseUrl}/${id}`, formData, {
+    return await this.client.put(`${this.baseUrl}/${id}`, formData, {
       headers: {
         'Authorization': 'Bearer '+localStorageAuthService.getAccessToken()
       },

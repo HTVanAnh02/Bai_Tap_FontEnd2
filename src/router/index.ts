@@ -38,6 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       public: true,
     },
   },
+  
   {
     path: '/404',
     name: PageName.NOT_FOUND_PAGE,

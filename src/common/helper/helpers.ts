@@ -1,8 +1,5 @@
-// import { ToastType, useToasts } from '@/components/toast/store';
 import dayjs from '@/plugins/dayjs';
-// import i18n from '../plugins/vue-i18n';
 import {
-  DATE_TIME_FORMAT,
   DEFAULT_FIRST_PAGE,
   DEFAULT_LIMIT_FOR_PAGINATION,
   OrderDirection,
@@ -50,11 +47,6 @@ export function maskPhone(value: string, pattern = '### #### ###') {
   let i = 0;
   return pattern.replace(/#/g, (_) => value[i++]);
 }
-
-// export function formatDate(date: Date | string) {
-//   return dayjs(date).format(DATE_TIME_FORMAT.YYYY_MM_DD_DASH);
-// }
-
 export const normalizeString = (str: string) => {
   return str
     .toLowerCase()
@@ -146,7 +138,6 @@ export const formatDateString = (ds: string, format: string): string => {
   return dayjs(ds).format(format);
 };
 
-// remove undefined/null items of array, if not have item return undefined
 export const removeEmptyValue = (arrays: any[]) => {
   const result: any[] = [];
   arrays?.forEach((item) => {
@@ -167,3 +158,12 @@ export const scrollToIdElement = (id: string) => {
 export const formatNumberWithCommas=(value:string)=> {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+export const checkSearchEnter = (str:string) => {
+  const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  return regex.test(str);
+};
+export const checkSearchUserEnter = (str: string) => {
+  const regex = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
+  return regex.test(str);
+};
+

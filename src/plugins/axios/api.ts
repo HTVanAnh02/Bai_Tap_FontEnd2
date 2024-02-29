@@ -36,24 +36,16 @@ export class ApiService {
         this.client = axios;
     }
 
-    // _getList<T>(
-    //     queryString: ICommonListQuery,
-    // ): Promise<IBodyResponse<IGetListResponse<T>>> {
-    //     return this.client.get(`${this.baseUrl}`, {
-    //         params: queryString,
-    //         headers: {
-    //             'Authorization': 'Bearer '+ localStorageAuthService.getAccessToken()
-    //           }
-    //         }
-    //     );
-    // }
-
     _getList<T>(
         queryString: ICommonListQuery,
     ): Promise<IBodyResponse<IGetListResponse<T>>> {
         return this.client.get(`${this.baseUrl}`, {
             params: queryString,
-        });
+            headers: {
+                'Authorization': 'Bearer '+localStorageAuthService.getAccessToken()
+              }
+            }
+        );
     }
 
     _getDetail<R>(id: number | string): Promise<R> {
