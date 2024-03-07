@@ -50,8 +50,6 @@
                   </b></td>
                 <td>{{ i.email }}</td>
                 <td class="v-text-truncate">
-                  <!-- {{ formatDateString(i.birthday, DD_MM_YYYY) }} -->
-                  <!-- {{ i.birthday }} -->
                   {{
                     i.birthday === undefined ||
                         i.birthday === "" ||
