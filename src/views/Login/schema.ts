@@ -11,3 +11,9 @@ export const loginWithPasswordSchema = yup.object({
     email: emailSchema,
     password: passwordSchema.matches(Regex.PASSWORD,MESSAGE_ERROR.REGEX_PASSWORD),
 });
+export const registerWithPasswordSchema = yup.object({
+    email: emailSchema,
+    password: passwordSchema.matches(Regex.PASSWORD,MESSAGE_ERROR.REGEX_PASSWORD),
+    confirmPassword: passwordSchema.matches(Regex.PASSWORD, MESSAGE_ERROR.REGEX_PASSWORD)
+        .oneOf([yup.ref('password')], MESSAGE_ERROR.PASSWORD_CHECK),
+});

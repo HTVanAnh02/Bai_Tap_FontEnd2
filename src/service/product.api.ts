@@ -32,3 +32,4 @@ export const productServiceApi = new ProductApiService(
   { baseUrl: "/product" },
   axiosInstance
 );
+

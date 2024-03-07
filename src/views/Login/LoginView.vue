@@ -1,12 +1,11 @@
 <template>
     <div>
         <v-card class="mt-0" variant="flat" style="width: 426px;
-        height: 476px;
-        position: absolute;
-        top: 119px;
-        left: 507px;
-        margin-top: 32px;
-        margin-left: 32px;">
+           height: 476px;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);">
             <v-img class="mx-auto mt-0" style="width: 108px; height: 60px;"
                 src="https://tse4.mm.bing.net/th?id=OIP.fv5DeUz-OmV84NOdioiodgHaEc&pid=Api&P=0&h=220"></v-img>
             <div class="text-h4 mt-6 mb-0"
@@ -27,7 +26,7 @@
                         style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
                         Mật Khẩu</div>
                     <v-text-field v-model="loginform.password" :error-messages="loginform.passwordError"
-                        :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'" :type="visible ? 'text' : 'password'"
+                        :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" :type="visible ? 'text' : 'password'"
                         density="compact" placeholder="••••••••••••••" variant="outlined"
                         @click:append-inner="visible = !visible">
                     </v-text-field>
@@ -48,23 +47,24 @@
                     <a class="text-decoration-none text-center"
                         style="font-family: 'Public Sans', sans-serif; font-size: 14px; color: #5A5C6F;">Bạn chưa có tài
                         khoản?</a>
-
-                    <a class="text-decoration-none text-center"
+                    <router-link to="/register" class="text-decoration-none text-center"
                         style="font-family: 'Public Sans', sans-serif; font-size: 14px; color:#0F60FF; font-weight: bold;">
                         Đăng ký?
-                    </a>
+                    </router-link>
                 </div>
             </v-form>
         </v-card>
     </div>
 </template>
+
 <script setup>
 import { reactive, ref } from 'vue';
-import { userLoginForm } from './loginform.ts'
+import { userLoginForm } from './login.ts'
 const loginform = reactive(userLoginForm());
 const visible = ref(false)
 const terms = ref('')
 </script>
+
 <style>
 .icon-field .v-icon {
     width: 4.98px;
@@ -99,12 +99,4 @@ const terms = ref('')
     border-radius: 4px;
 }
 </style>
-
-
-
-
-
-
-
-
-
+./login.js

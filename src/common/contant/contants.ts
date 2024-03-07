@@ -29,16 +29,28 @@ export const Regex = {
 
 
 export const MESSAGE_ERROR={
+    PASSWORD_CHECK:"Mật khẩu và xác nhận mật khẩu không khớp",
     REQUIRE:'Không được để trống',
     REGEX_EMAIL:'Email không phù hợp',
     REGEX_PASSWORD:'Mật khẩu phải có ít nhất 1 số',
     MINLEGHT_PASSWORD:'Mật khẩu tối thiểu '+FORM_VALIDATION.passwordMinLength+' ký tự',
     MAXLEGHT_PASSWORD:'Mật khẩu không quá '+FORM_VALIDATION.textMaxLength+' ký tự',
+    NAME:'Tên không hợp lệ. Tên chỉ được chứa chữ cái và khoảng trắng.',
+    EMAIL:'Email không hợp lệ',
+    BIRTHDAY:'Ngày sinh không hợp lệ. Vui lòng nhập theo định dạng YYYY-MM-DD.',
+    PHONE:'Số điện thoại không hợp lệ. Số điện thoại phải có 10 chữ số.',
+    URL:'URL không hợp lệ',
+    MIN:'Giá không được nhỏ hơn 0',
+    NUMBER:'Giá phải là một số',
+    MAX_PRICE:'Giá phải nhỏ hơn 1 tỷ',
+    NUMBER_INT:'Số lượng phải là một số nguyên',
+    MAX_QUANTITY:'Số lượng phải nhỏ hơn 1 triệu'
 }
 
 
 export enum PageName {
   LOGIN_PAGE = 'login_page',
+  REGISTER_PAGE="register_page",
   DASHBOARD_PAGE = 'dashboard_page',
   NOT_FOUND_PAGE = 'not_found_page',
   FORBIDDEN_PAGE = 'forbidden_page',

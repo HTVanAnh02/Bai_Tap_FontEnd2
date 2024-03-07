@@ -158,12 +158,37 @@ export const scrollToIdElement = (id: string) => {
 export const formatNumberWithCommas=(value:string)=> {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+// export const checkSearchEnter = (str:string) => {
+//   const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+//   return regex.test(str);
+// };
 export const checkSearchEnter = (str:string) => {
   const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-  return regex.test(str);
+  const minLength = 3;
+  const keywords = ['apple', 'banana', 'orange'];
+  const hasSpecialCharacters = regex.test(str);
+  const isTooShort = str.length < minLength;
+  const isEmpty = str.trim() === '';
+  const isNotString = typeof str !== 'string';
+  const hasNoValidKeyword = !keywords.some(keyword => str.includes(keyword));
+
+  return hasSpecialCharacters || isTooShort || isEmpty || isNotString || hasNoValidKeyword;
 };
-export const checkSearchUserEnter = (str: string) => {
-  const regex = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
-  return regex.test(str);
+// export const checkSearchUserEnter = (str: string) => {
+//   const regex = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
+//   return regex.test(str);
+// };
+export const checkSearchUserEnter = (str:string) => {
+  const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  const minLength = 3;
+  const keywords = ['apple', 'banana', 'orange'];
+
+  const hasSpecialCharacters = regex.test(str);
+  const isTooShort = str.length < minLength;
+  const isEmpty = str.trim() === '';
+  const isNotString = typeof str !== 'string';
+  const hasNoValidKeyword = !keywords.some(keyword => str.includes(keyword));
+
+  return hasSpecialCharacters || isTooShort || isEmpty || isNotString || hasNoValidKeyword;
 };
 

@@ -43,11 +43,11 @@
                 <v-card-actions class="pr-4">
                     <v-spacer></v-spacer>
                     <v-btn width="70px" variant="outlined" height="32px"
-                        style="font-family: Public Sans;font-size: 14px;margin-right: 16px;" @click="close()"
-                        class="text-capitalize" text="Hủy"></v-btn>
-                    <v-btn width="105px" height="32px" style="font-family: Public Sans;font-size: 14px;" type="submit"
-                        color="#0F60FF" class="text-capitalize" variant="elevated">{{ itemEdit ? "Update" : "Tạo" }}<span
-                            class="text-lowercase">{{ itemEdit ? "" : "mới" }}</span></v-btn>
+                        style="font-family: Public Sans, sans-serif; font-size: 14px; margin-right: 16px; border: 1px solid #A1A9B8;border-radius: 6px;"
+                        @click="close()" class="text-capitalize" text="Hủy"></v-btn>
+                    <v-btn width="105px" height="32px" style="font-family: Public Sans , sans-serif;font-size: 14px; border-radius: 6px;"
+                        type="submit" color="#0F60FF" class="text-capitalize" variant="elevated">{{ itemEdit ? "Update" :
+                            "Tạo" }}<span class="text-lowercase">{{ itemEdit ? "" : "mới" }}</span></v-btn>
                 </v-card-actions>
             </v-card>
         </v-form>
@@ -60,8 +60,8 @@ import * as yup from 'yup';
 import { ref, watch, onUpdated } from 'vue';
 import { productServiceApi } from '@/service/product.api';
 import { showSuccessNotification, showWarningsNotification } from '@/common/helper/helpers';
-import { useLoadingStore } from '@/store/loading';
-const loading = useLoadingStore()
+import { Loading } from '@/store/loading';
+const loading = Loading()
 
 
 
@@ -210,7 +210,7 @@ const close = () => {
 }
 
 * {
-    font-family: Public Sans;
+    font-family: Public Sans, sans-serif;
     font-size: 14px;
 }
 </style>

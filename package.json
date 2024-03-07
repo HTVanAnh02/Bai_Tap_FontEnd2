@@ -1,5 +1,5 @@
 {
-  "name": "font_end_typescripts",
+  "name": "shop_mypham",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -32,6 +32,8 @@
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "sass": "^1.71.1",
+    "sass-loader": "^14.1.1",
     "typescript": "^5.3.3",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "webpack-plugin-vuetify": "^2.0.0-alpha.0"

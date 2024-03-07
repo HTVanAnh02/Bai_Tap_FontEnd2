@@ -31,6 +31,14 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/register',
+    name: PageName.REGISTER_PAGE,
+    component: () => import('../views/Register/RegisterView.vue'),
+    meta: {
+      public: true,
+    },
+  },
+  {
     path: '/home',
     name: PageName.TRANG_CHU,
     component: () => import('../views/HomeView.vue'),
@@ -47,7 +55,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/admin',
     name: PageName.ADMIN,
-    component: () => import('../views/IndexView.vue'),
+    component: () => import('../views/NarbarView.vue'),
     children: [
       {
         path: 'product',

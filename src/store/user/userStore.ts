@@ -1,4 +1,3 @@
-// import localStorageAuthService from '@/common/storages/authStorage';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 
@@ -8,7 +7,6 @@ export const useUserStore = defineStore('userStore', () => {
     const isShowDialogChangePassword = ref(false);
   
     const profile = computed(() => {
-    //   return localStorageAuthService.getLoginUser();
     });
   
     return {

@@ -10,6 +10,8 @@ export const enum AUTH_SERVICE_KEY {
   LANGUAGE = "LANGUAGE",
   ACCESS_TOKEN_EXPIRED_AT = "ACCESS_TOKEN_EXPIRED_AT",
   REFRESH_TOKEN_EXPIRED_AT = "REFRESH_TOKEN_EXPIRED_AT",
+  AVATAR="AVATAR",
+  EMAIL ="EMAIL"
 }
 class LocalStorageAuthService {
   setAccessToken(token: string): void {
@@ -79,6 +81,12 @@ class LocalStorageAuthService {
       DEFAULT_LANGUAGE) as SupportLanguage;
   }
 
+  setAvatar(avatar: string): void {
+    storage.setLocalStorage(AUTH_SERVICE_KEY.AVATAR, avatar);
+  }
+  getAvatar():string{
+    return storage.getLocalStorage(AUTH_SERVICE_KEY.AVATAR); 
+  }
   getHeader() {
     return {
       Authorization: `Bearer ${this.getAccessToken()}`,

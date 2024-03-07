@@ -18,6 +18,10 @@ export interface IResponseError<T = any> {
   data?: T;
 }
 
+export type IRegister = {
+  email?: string;
+  password?: string;
+};
 export interface IBodyResponse<T> extends AxiosResponse {
   success: boolean;
   isRequestError?: boolean;
@@ -41,6 +45,7 @@ export interface IUser {
   email: string;
   name?: string;
   role?:string;
+  avatar?:string;
 }
 
 export type IBodyLogin = {

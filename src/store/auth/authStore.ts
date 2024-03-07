@@ -1,10 +1,11 @@
 import localStorageAuthService from '@/common/storages/authStorage';
 import { defineStore } from 'pinia';
 import { authServiceApi } from '@/service/auth.api';
-import type { IBodyLogin } from '@/views/Login/interfaces';
+import type { IBodyLogin, IRegister } from '@/views/Login/interfaces';
 import { computed } from 'vue';
 import dayjs from '@/plugins/dayjs';
 import { logout } from '@/plugins/axios/utils';
+import { showWarningsNotification } from '@/common/helper/helpers';
 
 export const AuthStore = defineStore('authStore', () => {
 
@@ -22,11 +23,22 @@ export const AuthStore = defineStore('authStore', () => {
 
       localStorageAuthService.setRefreshToken(res.data.refreshToken.token);
       localStorageAuthService.setRefresh_TokenExpiredAt(res.data.refreshToken.expiresIn);
-      
+
       localStorageAuthService.setUserRole(res.data.profile?.role || "");
+      localStorageAuthService.setAvatar(res.data.profile?.avatar || "")
       return true
     }
     return false;
+  }
+  async function register(body: IRegister)
+  {
+    const res=await authServiceApi.register(body)
+    if(!res.success)
+    {
+      showWarningsNotification(res.message)
+      return false
+    }
+    return true
   }
 
   const isAuthenticated = computed(() => {
@@ -42,5 +54,6 @@ export const AuthStore = defineStore('authStore', () => {
     logoutAction,
     hasToken,
     isAuthenticated,
+    register
   };
 });
