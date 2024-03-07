@@ -105,7 +105,7 @@
   <ConfirmVue v-model="isDialogDelete" @close="close()" :idDelete="idDelete" @delete="deleteProductById" />
 </template>
 <script setup>
-import { computed, onMounted, reactive, ref, watch, watchEffect } from 'vue';
+import {  onMounted, ref, watch } from 'vue';
 import DialogViewVue from '@/components/Admin/Product/DialogView.vue';
 import ConfirmVue from '@/components/confirm/confirmView.vue'
 const isShowDialog = ref(false);

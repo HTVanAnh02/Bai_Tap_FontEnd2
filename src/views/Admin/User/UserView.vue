@@ -105,7 +105,7 @@
       </v-col>
     </v-row>
   </div>
-  <DialogViewVue v-model="isShowDialog" :idEdit="idEdit" @close="close()" @loadData="loadData()" />
+  <DialogViewVue v-model="isShowDialog" :itemEdit="itemEdit" @close="close()" @loadData="loadData()" />
   <ConfirmVue v-model="isDialogDelete" @close="close()" :idDelete="idDelete" @delete="deleteUserById" />
 </template>
 <script setup>
@@ -115,8 +115,8 @@ import { checkSearchUserEnter, formatDateString } from '../../../common/helper/h
 import { onMounted, ref, watch } from 'vue';
 import DialogViewVue from '@/components/Admin/User/DialogView.vue';
 import { useUser } from '../User/user'
-import ConfirmVue from '@/components/confirm/confirmView.vue'
 import { userServiceApi } from '@/service/user.api';
+import ConfirmVue from '@/components/confirm/confirmView.vue'
 import { showErrorNotification, showSuccessNotification } from '@/common/helper/helpers';
 const DD_MM_YYYY = DATE_TIME_FORMAT.DD_MM_YYYY_DASH
 const isShowDialog = ref(false);
@@ -195,6 +195,7 @@ const deleteUserById = async (id) => {
 }
 const close = () => {
   isShowDialog.value = false
+  isDialogDelete.value = false
 }
 watch(seletedValue, (newval) => {
   query.limit = newval
