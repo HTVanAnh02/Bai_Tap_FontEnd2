@@ -62,7 +62,7 @@
             <v-select v-model="SortPrice" density="compact" :items="['Price ↑']" variant="outlined"></v-select>
           </v-col>
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortAnotherPrice" label="Price" density="compact" :items="['Price ↓']"
+            <v-select v-model="SortAnotherPrice" density="compact" :items="['Price ↓']"
               variant="outlined"></v-select>
           </v-col>
           <v-col cols="12" sm="6" md="6" lg="6" class="text-right">
