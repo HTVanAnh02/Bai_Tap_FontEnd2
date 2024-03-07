@@ -106,7 +106,7 @@
     </v-row>
   </div>
   <DialogViewVue v-model="isShowDialog" :idEdit="idEdit" @close="close()" @loadData="loadData()" />
-  <ConfirmVue v-model="isDialogDelete" :idDelete="idDelete" @delete="deleteUserById" />
+  <ConfirmVue v-model="isDialogDelete" @close="close()" :idDelete="idDelete" @delete="deleteProductById" />
 </template>
 <script setup>
 import { DATE_TIME_FORMAT } from '../../../common/contant/contants'
