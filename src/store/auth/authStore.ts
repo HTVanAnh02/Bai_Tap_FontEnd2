@@ -13,28 +13,32 @@ export const AuthStore = defineStore('authStore', () => {
     await authServiceApi.logout();
     logout();
   }
-
   async function login(body: IBodyLogin) {
     const res = await authServiceApi.login(body);
-    console.log(res)
+
     if (res.success) {
-      localStorageAuthService.setAccessToken(res.data.accessToken.token);
-      localStorageAuthService.setAccessTokenExpiredAt(res.data.accessToken.expiresIn);
+        const { data } = res;
 
-      localStorageAuthService.setRefreshToken(res.data.refreshToken.token);
-      localStorageAuthService.setRefresh_TokenExpiredAt(res.data.refreshToken.expiresIn);
+        localStorageAuthService.setAccessToken(data.accessToken.token);
+        localStorageAuthService.setAccessTokenExpiredAt(data.accessToken.expiresIn);
 
-      localStorageAuthService.setUserRole(res.data.profile?.role || "");
-      localStorageAuthService.setAvatar(res.data.profile?.avatar || "")
-      return true
+        localStorageAuthService.setRefreshToken(data.refreshToken.token);
+        localStorageAuthService.setRefresh_TokenExpiredAt(data.refreshToken.expiresIn);
+
+        const profile = data.profile || {};  // Đảm bảo profile không null
+        localStorageAuthService.setUserRole(profile.role || "");
+        localStorageAuthService.setAvatar(profile.avatar || "");
+        localStorageAuthService.setName(profile.name || "");
+        localStorageAuthService.setPhone(profile.phone || "");
+
+        return true;
     }
+
     return false;
-  }
-  async function register(body: IRegister)
-  {
-    const res=await authServiceApi.register(body)
-    if(!res.success)
-    {
+}
+  async function register(body: IRegister) {
+    const res = await authServiceApi.register(body)
+    if (!res.success) {
       showWarningsNotification(res.message)
       return false
     }

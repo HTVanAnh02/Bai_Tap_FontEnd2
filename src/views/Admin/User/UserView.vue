@@ -1,7 +1,7 @@
 <template>
   <div style="margin: 1.5%;">
     <v-row>
-      <v-col cols="3">
+      <v-col cols="5" sm="4" md="4" lg="3">
         <v-text-field v-model="search" style="width: 316px; height: 37px; background-color: white;border-radius: 10px;"
           density="compact" variant="solo" label="Tìm kiếm" append-inner-icon="mdi mdi-magnify" single-line hide-details
           class="mr-2" @keydown.enter="searchEnter()"></v-text-field>
@@ -111,7 +111,7 @@
 <script setup>
 import { DATE_TIME_FORMAT } from '../../../common/contant/contants'
 import { DEFAULT_LIMIT_FOR_PAGINATION } from '@/common/contant/contants';
-import { checkSearchUserEnter, formatDateString } from '../../../common/helper/helpers'
+import { checkSearchUserEnter } from '../../../common/helper/helpers'
 import { onMounted, ref, watch } from 'vue';
 import DialogViewVue from '@/components/Admin/User/DialogView.vue';
 import { useUser } from '../User/user'
@@ -125,7 +125,7 @@ const seletedValue = ref(DEFAULT_LIMIT_FOR_PAGINATION)
 const { fetchUsers, users, query, searchUsers } = useUser()
 const search = ref(null)
 const TotalUsers = ref(null)
-let idEdit = ref(null)
+let itemEdit = ref(null)
 let idDelete = ref(null)
 let lengthPage = ref(1)
 let page = ref(1)
@@ -151,12 +151,12 @@ const loadData = async () => {
 }
 const addUser = () => {
   isShowDialog.value = true
-  idEdit = null
+  itemEdit = null
 }
 
 const updateUserById = id => {
   isShowDialog.value = true
-  idEdit = id
+  itemEdit = id
 }
 const searchEnter = () => {
   if(checkSearchUserEnter(search.value))
@@ -172,13 +172,14 @@ const searchEnter = () => {
 };
 const searchData = async () => {
   const res = await searchUsers()
-  if (res.data) {
+  if(res.data)
+  {
     users.value = res.data;
     lengthPage.value = Math.ceil(res.totalItems / seletedValue.value);
-    TotalUsers.value = res.totalItems
+    TotalUsers.value=res.totalItems
     return
   }
-  users.value = []
+  users.value=[]
 }
 
 const deleteUserById = async (id) => {
@@ -204,11 +205,13 @@ watch(seletedValue, (newval) => {
   loadData()
 })
 watch(search, (newval) => {
-  query.keyword = newval
-  query.page = 1
-  searchData()
+  if(search.value==="")
+  {
+    query.keyword = search.value
+    query.page = 1
+    searchData()
+  }
 })
-
 watch(page, (newVal) => {
   query.page = newVal
   loadData()

@@ -16,13 +16,24 @@ export const userRegisterForm = () => {
   } = useForm({
     validationSchema: registerWithPasswordSchema,
   });
+  const {
+    value: name,
+    setValue: setName,
+    errorMessage: nameError,
+  } = useField('name');
+
+  const {
+    value: phone,
+    setValue: setPhone,
+    errorMessage: phoneError,
+  } = useField('phone');
 
   const {
     value: email,
     setValue: setEmail,
     errorMessage: emailError,
   } = useField('email');
-  
+
   const {
     value: password,
     setValue: setPassword,
@@ -35,19 +46,25 @@ export const userRegisterForm = () => {
     errorMessage: confirmPasswordError,
   } = useField('confirmPassword');
 
+  const {
+    value: avatar,
+    setValue: setAvatar,
+    errorMessage: avatarError,
+  } = useField('avatar');
   const handleRegister = handleSubmit(async (values) => {
     loading.setLoading(true)
     const res = await authStore.register({
+      name:values.name,
       email: values.email,
       password: values.password,
+      phone: values.phone,
+      avatar: values.avatar,
     });
     loading.setLoading(false)
-    if(res)
-    {
-        showSuccessNotification("Đăng ký thành công")
+    if (res) {
+      showSuccessNotification("Đăng ký thành công")
     }
-    else
-    {
+    else {
       showWarningsNotification("Đăng ký thất bại. Vui lòng thử lại");
     }
   });
@@ -67,5 +84,14 @@ export const userRegisterForm = () => {
     confirmPassword,
     setConfirmPassword,
     confirmPasswordError,
+    name,
+    setName,
+    nameError,
+    phone,
+    setPhone,
+    phoneError,
+    avatar,
+    setAvatar,
+    avatarError,
   };
 };

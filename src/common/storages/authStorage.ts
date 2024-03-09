@@ -11,7 +11,9 @@ export const enum AUTH_SERVICE_KEY {
   ACCESS_TOKEN_EXPIRED_AT = "ACCESS_TOKEN_EXPIRED_AT",
   REFRESH_TOKEN_EXPIRED_AT = "REFRESH_TOKEN_EXPIRED_AT",
   AVATAR="AVATAR",
-  EMAIL ="EMAIL"
+  EMAIL ="EMAIL",
+  NAME ="NAME",
+  PHONE ="PHONE",
 }
 class LocalStorageAuthService {
   setAccessToken(token: string): void {
@@ -80,7 +82,21 @@ class LocalStorageAuthService {
     return (storage.getLocalStorage(AUTH_SERVICE_KEY.LANGUAGE) ||
       DEFAULT_LANGUAGE) as SupportLanguage;
   }
+  setName(name: string): void {
+    storage.setLocalStorage(AUTH_SERVICE_KEY.NAME, name);
+}
 
+getName(): string {
+    return storage.getLocalStorage(AUTH_SERVICE_KEY.NAME);
+}
+
+setPhone(phone: string): void {
+    storage.setLocalStorage(AUTH_SERVICE_KEY.PHONE, phone);
+}
+
+getPhone(): string {
+    return storage.getLocalStorage(AUTH_SERVICE_KEY.PHONE);
+}
   setAvatar(avatar: string): void {
     storage.setLocalStorage(AUTH_SERVICE_KEY.AVATAR, avatar);
   }

@@ -55,16 +55,18 @@
       <v-card cols="4" sm="6" md="6" lg="2" class="custom-card" style="top: 24px; border-radius: 4px;">
         <v-row class="ml-3 mt-2">
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortCategory" density="compact" label="Name" :items="['Son', 'Kem Nền', 'All']"
-              variant="outlined"></v-select>
+            <v-select v-model="SortCategory" @change="findAllAndCountProductByQuery" density="compact" label="Name"
+              :items="['Son', 'Kem Nền', 'All']" variant="outlined"></v-select>
           </v-col>
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortPrice" density="compact" :items="['Price ↑']" variant="outlined"></v-select>
+            <v-select v-model="SortPrice" @change="findAllAndCountProductByQuery" density="compact" label="Price"
+              :items="['Price ↑', 'Price ↓']" variant="outlined"></v-select>
           </v-col>
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortAnotherPrice" density="compact" :items="['Price ↓']"
-              variant="outlined"></v-select>
+            <v-select v-model="SortFeedBack" @change="findAllAndCountProductByQuery" density="compact" label="Feedback"
+              :items="['5 star', '< 5 star']" variant="outlined"></v-select>
           </v-col>
+
           <v-col cols="12" sm="6" md="6" lg="6" class="text-right">
             <v-btn style="font-family: Inter, sans-serif; background-color: rgb(212, 227, 255);color:#0f0f13"
               variant="tonal">
@@ -127,10 +129,6 @@
                 <span v-if="item.sale > 0"
                   style="border-radius: 4px;margin-right: 0.7%;font-size: 12px;float: right;min-width: 70px;min-height: 24px;padding: 2px;background-color: #ECF7ED;text-align: center;color: #37833B;font-weight: 300;font-family: Roboto, sans-serif ;">
                   {{ item.sale }}% OFF
-                </span>
-                <span v-if="item.cool == true"
-                  style="border-radius: 4px;margin-right: 0.7%;font-size: 12px;float: right;min-width: 70px;min-height: 24px;padding: 2px;background-color: #FDEDF2;text-align: center;color: #C23564;font-weight: 300;font-family: Roboto, sans-serif;">
-                  Cool deal!
                 </span>
               </v-card-text>
               <p class="ml-4"
@@ -206,13 +204,13 @@
 
 <script lang="ts" setup>
 import localStorageAuthService from "@/common/storages/authStorage"
-import { computed, reactive, ref } from "vue"
+import { reactive, ref } from "vue"
 const SortCategory = ref('All')
 const SortPrice = ref('Price ↑')
-const SortAnotherPrice = ref('Price ↓')
+const SortFeedBack = ref('5 start')
 const avatar = ref(localStorageAuthService.getAvatar())
 const products = reactive([
-  {
+{
     image: "https://media.hcdn.vn/catalog/product/t/o/top_fb_ads_210000069_310523-1685529439_img_358x358_843626_fit_center.jpg",
     name: "Son Thỏi MAC Mịn Lì 646 Marrakesh - Đỏ Đất 3g Matte Lipstick",
     description: "Son môi MAC Matte Lipstick là một trong những biểu tượng đã làm nên tên tuổi của M·A·C .",
@@ -321,27 +319,8 @@ const products = reactive([
     feedback: 4.8
   },
 
-])
-const sortedProducts = computed(() => {
-  let sorted = [...products]
 
-  if (SortCategory.value === 'Son') {
-    sorted = sorted.filter(product => product.name.includes('Son'))
-  } else if (SortCategory.value === 'Kem Nền') {
-    sorted = sorted.filter(product => product.name.includes('Kem Nền'))
-  }
-
-  if (SortPrice.value === 'Giá ↑') {
-    sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-  }
-
-  if (SortAnotherPrice.value === 'Giá ↓') {
-    sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
-  }
-
-  return sorted
-})
-
+]);
 </script>
 
 <style scop>

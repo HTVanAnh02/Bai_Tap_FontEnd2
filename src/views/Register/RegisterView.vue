@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card class="mt-0" variant="flat" style="width: 426px;
-           height: 550px;
+           height: 650px;
            position: absolute;
            top: 50%;
            left: 50%;
@@ -17,31 +17,68 @@
                 <div class="text-subtitle-1 text-medium-emphasis" style="margin-top: 32px; width: 425px; height: 60px;">
                     <div
                         style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
+                        Tên Người Dùng</div>
+                    <v-text-field v-model="registerform.name"
+                            :error-messages="registerform.nameError" density="compact" placeholder="Nhập tên người dùng"
+                        variant="outlined"></v-text-field>
+                </div>
+                <div class="text-subtitle-1 text-medium-emphasis" style="margin-top: 32px; width: 425px; height: 60px;">
+                    <div
+                        style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
                         Email</div>
-                    <v-text-field v-model="registerform.email" type="email" :error-messages="registerform.emailError" required
-                        density="compact" placeholder="Nhập email" variant="outlined"></v-text-field>
+                    <v-text-field v-model="registerform.email" type="email" :error-messages="registerform.emailError"
+                        required density="compact" placeholder="Nhập email" variant="outlined"></v-text-field>
                 </div>
-                <div class="text-subtitle-1 text-medium-emphasis" style="margin-top: 32px; width: 425px; height: 60px;">
-                    <div
-                        style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
-                        Mật Khẩu</div>
-                    <v-text-field v-model="registerform.password" :error-messages="registerform.passwordError"
-                        :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" :type="visible ? 'text' : 'password'"
-                        density="compact" placeholder="••••••••••••••" variant="outlined"
-                        @click:append-inner="visible = !visible">
-                    </v-text-field>
+                <div class="container"
+                    style="display: flex; justify-content: space-between; width: 425px; margin-top: 32px;">
+                    <div class="text-subtitle-1 text-medium-emphasis" style="width: 200px; height: 60px;">
+                        <div
+                            style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
+                            Mật Khẩu</div>
+                        <v-text-field v-model="registerform.password" :error-messages="registerform.passwordError"
+                            :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
+                            :type="visible ? 'text' : 'password'" density="compact" placeholder="••••••••••••••"
+                            variant="outlined" @click:append-inner="visible = !visible">
+                        </v-text-field>
+                    </div>
+
+                    <div class="text-subtitle-1 text-medium-emphasis" style="width: 200px; height: 60px;">
+                        <div
+                            style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
+                            Nhập Lại Mật Khẩu</div>
+                        <v-text-field v-model="registerform.confirmPassword"
+                            :error-messages="registerform.confirmPasswordError"
+                            :append-inner-icon="visible1 ? 'mdi-eye' : 'mdi-eye-off'"
+                            :type="visible1 ? 'text' : 'password'" density="compact" placeholder="••••••••••••••"
+                            variant="outlined" @click:append-inner="visible1 = !visible1">
+                        </v-text-field>
+                    </div>
                 </div>
-                <div class="text-subtitle-1 text-medium-emphasis" style="margin-top: 32px; width: 425px; height: 60px;">
-                    <div
-                        style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
-                         Nhập Lại Mật Khẩu</div>
-                    <v-text-field v-model="registerform.confirmPassword" :error-messages="registerform.confirmPasswordError"
-                        :append-inner-icon="visible1 ? 'mdi-eye' : 'mdi-eye-off'" :type="visible1 ? 'text' : 'password'"
-                        density="compact" placeholder="••••••••••••••" variant="outlined"
-                        @click:append-inner="visible1 = !visible1">
-                    </v-text-field>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="text-subtitle-1 text-medium-emphasis"
+                        style="width: 200px; height: 60px; margin-top: 32px;">
+                        <div
+                            style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
+                            Số Điện Thoại
+                        </div>
+                        <v-text-field v-model="registerform.phone"
+                            :error-messages="registerform.phoneError"  density="compact" placeholder="Nhập số điện thoại"
+                            variant="outlined"></v-text-field>
+                    </div>
+
+                    <div class="text-subtitle-1 text-medium-emphasis"
+                        style="width: 200px; height: 60px; margin-top: 32px;">
+                        <div
+                            style="height: 28px; font-family: 'Public Sans', sans-serif; font-size: 14px; font-weight: bold; color: #464F60;">
+                            Avatar
+                        </div>
+                        <v-text-field v-model="registerform.avatar"
+                            :error-messages="registerform.avatarError" density="compact" placeholder="Nhập link ảnh"
+                            variant="outlined"></v-text-field>
+                    </div>
                 </div>
-                <v-btn @click="registerform.handleRegister" @enter="registerform.handleRegister" block class="mb-8" color="#0F60FF"
+                <v-btn @click="registerform.handleRegister" @enter="registerform.handleRegister" block class="mb-8"
+                    color="#0F60FF"
                     style="margin-top: 40px; font-family: 'Public Sans', sans-serif; width: 425px; height: 48px; font-size: 16px; ">
                     <span class="text-capitalize">Đăng</span>
                     <span class="text-lowercase">ký</span>

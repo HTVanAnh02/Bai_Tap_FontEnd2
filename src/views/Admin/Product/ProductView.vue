@@ -139,16 +139,7 @@ const loadData = async () => {
   }
   products.value = []
 }
-const searchData = async () => {
-  const res = await searchProducts()
-  if (res.data) {
-    products.value = res.data;
-    lengthPage.value = Math.ceil(res.totalItems / seletedValue.value);
-    TotalProducts.value = res.totalItems
-    return
-  }
-  products.value = []
-}
+
 const addProduct = () => {
   isShowDialog.value = true
   itemEdit = null
@@ -169,6 +160,17 @@ const deleteProductById = async (id) => {
     isDialogDelete.value = false
     showErrorNotification(data.message)
   }
+}
+const searchData = async () => {
+  const res = await searchProducts()
+  if(res.data)
+  {
+    products.value = res.data;
+    lengthPage.value = Math.ceil(res.totalItems / seletedValue.value);
+    TotalProducts.value=res.totalItems
+    return
+  }
+  products.value=[]
 }
 const close = () => {
   isShowDialog.value = false

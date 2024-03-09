@@ -174,10 +174,6 @@ export const checkSearchEnter = (str:string) => {
 
   return hasSpecialCharacters || isTooShort || isEmpty || isNotString || hasNoValidKeyword;
 };
-// export const checkSearchUserEnter = (str: string) => {
-//   const regex = /[!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
-//   return regex.test(str);
-// };
 export const checkSearchUserEnter = (str:string) => {
   const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
   const minLength = 3;

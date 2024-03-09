@@ -73,7 +73,7 @@
 <script setup>
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
-import {  watch } from 'vue';
+import {  onUpdated, watch } from 'vue';
 import { showSuccessNotification, showWarningsNotification } from '@/common/helper/helpers';
 import { Loading } from '@/store/loading';
 import { Role } from '@/common/contant/contants';
@@ -81,14 +81,12 @@ import { userServiceApi } from '@/service/user.api';
 const loading = Loading()
 
 
-const props = defineProps(['idEdit'])
+const props = defineProps(['itemEdit'])
 const emit = defineEmits(['close', 'loadData'])
-let id = props.idEdit
-watch(() => props.idEdit, (newValue, oldValue) => {
+watch(() => props.itemEdit, (newValue, oldValue) => {
     resetForm()
-    id = newValue
-    if (props.idEdit !== null) {
-        getUserById(id)
+    if (props.itemEdit !== null) {
+        getUserById(newValue)
     }
 });
 const getUserById = async (id) => {
@@ -112,6 +110,11 @@ const getUserById = async (id) => {
         console.error('Error fetching product detail:', error);
     }
 }
+onUpdated(() => {
+    if (props.itemEdit === null)
+        resetForm()
+})
+
 
 
 
@@ -183,49 +186,47 @@ const { value: avatar, errorMessage: avatarError } = useField(
             'Đây không phải là một URL hợp lệ'
         )
 );
-
-
-
 const submit = handleSubmit(async () => {
-    loading.setLoading(true)
-    const formData = new FormData();
-    formData.append('name', name.value);
-    formData.append('email', email.value);
-    formData.append('birthday', birthday.value);
-    formData.append('phone', phone.value);
-    formData.append('avatar', avatar.value);
-    formData.append('role', role.value);
-    if (id == null) {
-        // alert("Thêm")
-        const data = await userServiceApi.createUser(formData);
-        if (!data.success) {
-            loading.setLoading(false)
-            close()
-            showWarningsNotification(data.message)
+    try {
+        loading.setLoading(true)
+        const formData = new FormData();
+        formData.append('name', name.value);
+        formData.append('email', email.value);
+        formData.append('birthday', birthday.value);
+        formData.append('phone', phone.value);
+        formData.append('avatar', avatar.value);
+        formData.append('role', role.value);
+        if (props.itemEdit == null) {
+            const data = await userServiceApi.createUser(formData);
+            // console.log(data)
+            if (!data.success) {
+                alert("Tạo lỗi")
+                showWarningsNotification(data.message)
+            }
+            else {
+                close()
+                emit('loadData')
+                showSuccessNotification("Thêm thành công")
+                empty()
+            }
         }
         else {
-            loading.setLoading(false)
-            close()
-            emit('loadData')
-            showSuccessNotification("Thêm thành công")
+            const data = await userServiceApi.updateUser(props.itemEdit.id, formData);
+            console.log(data)
+            if (!data.success) {
+                showWarningsNotification(data.message)
+            }
+            else {
+                close()
+                emit('loadData')
+                showSuccessNotification("cập nhật thành công")
+                empty()
+            }
         }
-    }
-    else {
-        // alert("sửa")
-        const data = await userServiceApi.updateUser(id, formData);
-        // console.log(data)
-        if (!data.success) {
-            close()
-            loading.setLoading(false)
-            showWarningsNotification(data.message)
-            showWarningsNotification(data.error)
-        }
-        else {
-            loading.setLoading(false)
-            close()
-            emit('loadData')
-            showSuccessNotification("Cập nhật thành công")
-        }
+    } catch (error) {
+        showWarningsNotification(error.message)
+    } finally {
+        loading.setLoading(false)
     }
 });
 const close = () => {
@@ -233,7 +234,7 @@ const close = () => {
     resetForm()
 }
 const empty = () => {
-    id = null;
-    props.idEdit = null
+    props.itemEdit = null
 }
+
 </script>

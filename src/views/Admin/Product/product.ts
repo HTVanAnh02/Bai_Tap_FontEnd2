@@ -1,4 +1,4 @@
-import { computed, onMounted, reactive, ref } from "vue";
+import {  ref } from "vue";
 import { productServiceApi } from "@/service/product.api";
 import { DEFAULT_COMMON_LIST_QUERY } from "@/common/contant/contants";
 import { IProduct } from "./interfaces";
@@ -36,10 +36,6 @@ export const useProduct = () => {
     
         const res = await productServiceApi._getList<IProduct>(query);
         
-        // if (res.status === 419) {
-        //   logout(); // Đăng xuất nếu mã trạng thái là 419
-        // }
-        
         if (res.success) {
           const data = res.items;
           const totalItems = res.totalItems;
@@ -55,7 +51,6 @@ export const useProduct = () => {
       }
     };
     
-    //...
     
     return {
       products, // Thay thế 'products' bằng biến hoặc đối tượng chứa danh sách sản phẩm

@@ -1,54 +1,52 @@
 <template>
     <div class="body">
-        <h2>Inside Open Art</h2>
+        <h2 style="">Inside Open Art</h2>
         <div class="container">
             <div>
-                <v-img src="../assets/icon/Prison.png" height="30" width="30" class="child-icon" />
-                <p style="width: 181px;height: 25px; font-size: 24px; font-family: Epilogue, sans-serif;">4pt grid system
-                </p>
-                <p
-                    style="width: 396px; height: 42px; font-size: 16px; font-family: Epilogue, sans-serif; line-height: 21px;">
-                    Base on 4pt gird system. Our UI KIT helps you create perfect white space</p>
-                <p style="width: 396px;height: 42px; font-size: 16px; font-family: Epilogue, sans-serif;">Base on 4pt gird
-                    system. Our UI KIT help you crate perfect white space</p>
+                <img :src="icon1" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">4pt grid system</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">Base on 4pt gird system. Our UI KIT help you crate perfect white space</p>
             </div>
             <div>
-                <v-img src="../assets/icon/Color Dropper.png" height="30" width="30" class="child-icon" />
-                <p>Color style</p>
-                <p>All color in OpenArt are styled. You can change all
-                    design color with one click</p>
+                <img :src="icon2" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">Color style</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">All color in OpenArt are styled. You can change all
+design color with one click</p>
             </div>
             <div>
-                <v-img src="../assets/icon/Vector.png" height="30" width="30" class="child-icon" />
-                <p>Free font</p>
-                <p>OpenArt use Epilogue font family</p>
-                <p>Available with open licence in gooogle font</p>
+                <img :src="icon3" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">Free font</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">OpenArt use Epilogue font family</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">Available with open licence in gooogle font</p>
             </div>
             <div>
-                <v-img src="../assets/icon/Toggle On.png" height="30" width="30" class="child-icon" />
-                <p>Darkmode avaiable</p>
-                <p>Our UI Kit support darkmode</p>
-                <p>Chage your design to dark mode with one click</p>
+                <img :src="icon4" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">Darkmode avaiable</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">Our UI Kit support darkmode</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">Chage your design to dark mode with one click</p>
             </div>
             <div>
-                <v-img src="../assets/icon/Design.png" height="30" width="30" class="child-icon" />
-                <p>Easy to customize</p>
-                <p>Create any design with OpenArt UI kits </p>
+                <img :src="icon5" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">Easy to customize</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;">Create any design with OpenArt UI kits </p>
             </div>
             <div>
-                <v-img src="../assets/icon/Four Squares.png" height="30" width="30" class="child-icon" />
-                <p>Variant components</p>
-                <p>All component art variant, easy to design,
-                    easy to control</p>
+                <img :src="icon6" alt="">
+                <p style="color: #333333;font-size: 24px; font-weight: 400;font-family: Epilogue;">Variant components</p>
+                <p style="color: #555555;font-size: 16px; font-weight: 400;font-family: Epilogue;"> All component art variant, easy to design, 
+easy to control</p>
             </div>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+import icon1 from '@/assets/Prison.png'
+import icon2 from '@/assets/icon2.png'
+import icon3 from '@/assets/icon3.png'
+import icon4 from '@/assets/icon4.png'
+import icon5 from '@/assets/icon5.png'
+import icon6 from '@/assets/icon6.png'
 </script>
 
 <style scoped>
@@ -56,7 +54,7 @@ export default {
     margin: 0;
     padding: 0;
     box-shadow: 0;
-    font-family: Epilogue, sans-serif;
+    font-family: Epilogue,sans-serif !important;
 }
 
 .body {
@@ -69,54 +67,66 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-
-h2 {
-    width: 455px;
-    height: 64px;
-    margin-top: 116.56px;
-    left: 597.66px;
-    font-family: Epilogue, sans-serif;
+h2{
+    margin-top: 60px;
+    font-size: 40px;
     font-weight: 700;
-    font-size: 56px;
-    line-height: 64px;
+    color: #000000;
     text-align: center;
+    font-family: Epilogue;
 }
-
-.container>div {
+.container >div{
     width: 30%;
     background-color: white;
     height: auto;
     margin: 10px;
     color: black;
-    border-radius: 5px;
+    border-radius: 16px;
     padding: 20px;
 }
-
-.container {
+.container{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
     margin-top: 30px;
 }
-
-.container>div p:nth-child(2) {
+.container >div p:nth-child(2){
     margin: 10px;
     font-weight: 500;
 }
 
-.container>div p:last-child,
-.container>div p:nth-child(3) {
+.container >div p:last-child,.container >div p:nth-child(3){
     opacity: 0.7;
     margin-left: 10px;
 }
-
-.container>div img {
+.container >div img{
     width: 20px;
     margin-left: 10px;
 }
-
-.container>div p {
+.container >div p{
     font-size: 16px;
     line-height: 21px;
-}</style>
+}
+@media (max-width: 600px) {
+    .container{
+        flex-direction: column;
+        align-content: center;
+    }
+    .container >div{
+        width: 70%;
+    }
+    .container >div:last-child(){
+        margin-bottom: 20px;
+    }
+}
+@media ((max-width: 800px)and (min-width: 601px)) {
+    .container{
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .container >div{
+        width: 40%;
+    }
+}
+</style>

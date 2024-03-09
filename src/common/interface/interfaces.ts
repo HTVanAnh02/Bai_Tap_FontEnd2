@@ -36,6 +36,7 @@ export interface ICommonListQuery {
   orderBy?: string;
   orderDirection?: OrderDirection | string;
   keyword?: string;
+  description?:string;
 }
 
 export interface IUser {

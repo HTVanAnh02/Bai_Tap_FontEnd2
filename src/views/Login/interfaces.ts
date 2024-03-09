@@ -19,8 +19,11 @@ export interface IResponseError<T = any> {
 }
 
 export type IRegister = {
+  name?:string;
   email?: string;
   password?: string;
+  phone?:string;
+  avatar?: string;
 };
 export interface IBodyResponse<T> extends AxiosResponse {
   success: boolean;
@@ -38,12 +41,14 @@ export interface ICommonListQuery {
   orderBy?: string;
   orderDirection?: OrderDirection | string;
   keyword?: string;
+  
 }
 
 export interface IUser {
   _id: string;
   email: string;
   name?: string;
+  phone?:string;
   role?:string;
   avatar?:string;
 }
