@@ -55,15 +55,15 @@
       <v-card cols="4" sm="6" md="6" lg="2" class="custom-card" style="top: 24px; border-radius: 4px;">
         <v-row class="ml-3 mt-2">
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortCategory" @change="findAllAndCountProductByQuery" density="compact" label="Name"
+            <v-select v-model="SortCategory" density="compact" label="Name"
               :items="['Son', 'Kem Nền', 'All']" variant="outlined"></v-select>
           </v-col>
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortPrice" @change="findAllAndCountProductByQuery" density="compact" label="Price"
+            <v-select v-model="SortPrice" density="compact" label="Price"
               :items="['Price ↑', 'Price ↓']" variant="outlined"></v-select>
           </v-col>
           <v-col cols="4" sm="6" md="6" lg="2">
-            <v-select v-model="SortFeedBack" @change="findAllAndCountProductByQuery" density="compact" label="Feedback"
+            <v-select v-model="SortFeedBack" density="compact" label="Feedback"
               :items="['5 star', '< 5 star']" variant="outlined"></v-select>
           </v-col>
 
